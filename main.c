@@ -6,7 +6,7 @@
 /*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 12:29:12 by relgheit          #+#    #+#             */
-/*   Updated: 2025/02/28 16:28:43 by relgheit         ###   ########.fr       */
+/*   Updated: 2025/02/28 16:58:09 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,13 @@ int	main(void)
 	mlx_image_t	*img;
 	int			x = 50;
 	int			y = 50;
+	int			fd;
+	char 		*line;
 
+	line = NULL;
+	fd = open("maps/test_maps/10-2.fdf", O_RDONLY);
+	line = get_next_line(fd);
+	ft_printf("%s\n", line);
 	mlx = mlx_init(WIDTH, HEIGHT, "fdf", true);
 	if (!mlx)
 		return (1);
