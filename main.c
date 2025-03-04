@@ -6,7 +6,7 @@
 /*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 12:29:12 by relgheit          #+#    #+#             */
-/*   Updated: 2025/02/28 16:58:09 by relgheit         ###   ########.fr       */
+/*   Updated: 2025/03/04 08:39:21 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 #define WIDTH 500
 #define HEIGHT 500
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 	int			x = 50;
 	int			y = 50;
-	int			fd;
-	char 		*line;
 
-	line = NULL;
-	fd = open("maps/test_maps/10-2.fdf", O_RDONLY);
-	line = get_next_line(fd);
-	ft_printf("%s\n", line);
+	if (ac != 2)
+	{
+		ft_printf("check your inputs");
+		return (1);
+	}
+	read_file(av[1]);
 	mlx = mlx_init(WIDTH, HEIGHT, "fdf", true);
 	if (!mlx)
 		return (1);

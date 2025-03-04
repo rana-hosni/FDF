@@ -6,11 +6,11 @@
 #    By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 09:06:43 by relgheit          #+#    #+#              #
-#    Updated: 2025/02/28 17:48:33 by relgheit         ###   ########.fr        #
+#    Updated: 2025/03/04 08:37:26 by relgheit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFILES= main.c get_next_line.c
+CFILES= main.c get_next_line.c read_file.c
 
 OFILES= $(CFILES:.c=.o)
 
