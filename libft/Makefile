@@ -6,7 +6,7 @@
 #    By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/25 09:11:57 by relgheit          #+#    #+#              #
-#    Updated: 2024/10/08 09:23:11 by relgheit         ###   ########.fr        #
+#    Updated: 2025/03/05 13:33:34 by relgheit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strncmp.c\
 ft_tolower.c ft_toupper.c ft_atoi.c ft_strdup.c ft_strjoin.c\
 ft_substr.c ft_strtrim.c ft_putchar_fd.c ft_putstr_fd.c\
 ft_putendl_fd.c ft_putnbr_fd.c ft_itoa.c ft_strnstr.c ft_strmapi.c\
-ft_striteri.c ft_split.c
+ft_striteri.c ft_split.c get_next_line.c
+
 CBFILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c\
 ft_lstdelone.c ft_lstclear.c 
 #variable for .o files

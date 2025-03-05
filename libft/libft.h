@@ -6,7 +6,7 @@
 /*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 08:46:49 by relgheit          #+#    #+#             */
-/*   Updated: 2024/10/08 10:13:59 by relgheit         ###   ########.fr       */
+/*   Updated: 2025/03/05 13:06:06 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@
 # include <stdlib.h>
 # include <stdint.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
 typedef struct s_List
 {
 	void			*content;
 	struct s_List	*next;
 }					t_list;
+char	*get_next_line(int fd);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
