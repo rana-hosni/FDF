@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rana <rana@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 12:29:12 by relgheit          #+#    #+#             */
-/*   Updated: 2025/03/05 09:45:41 by relgheit         ###   ########.fr       */
+/*   Updated: 2025/03/08 16:03:56 by rana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h>
 
 #define WIDTH 500
 #define HEIGHT 500
@@ -19,19 +20,23 @@ int	main(int ac, char **av)
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;
-	t_data		*map;
+	int			**matrix;
 	int			x = 50;
 	int			y = 50;
+	int			fd;
+	char		*file;
+	t_data		*map;
 
 	if (ac != 2)
 	{
-		ft_printf("check your inputs");
+		printf("Wrong input\n");
 		return (1);
 	}
+	file = av[1];
 	map = (t_data *)malloc(sizeof(t_data));
 	if (!map)
 		return (1);
-	read_file(av[1], map);
+	read_file(file, map);
 	mlx = mlx_init(WIDTH, HEIGHT, "fdf", true);
 	if (!mlx)
 		return (1);
