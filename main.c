@@ -6,7 +6,7 @@
 /*   By: rana <rana@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 12:29:12 by relgheit          #+#    #+#             */
-/*   Updated: 2025/03/08 16:03:56 by rana             ###   ########.fr       */
+/*   Updated: 2025/03/08 22:02:08 by rana             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ int	main(int ac, char **av)
 	}
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
+	free(map);
 	return (0);
 }
