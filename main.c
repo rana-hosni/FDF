@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rana <rana@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 12:29:12 by relgheit          #+#    #+#             */
-/*   Updated: 2025/03/08 22:02:08 by rana             ###   ########.fr       */
+/*   Updated: 2025/03/10 15:08:51 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		printf("Wrong input\n");
+		ft_printf("Wrong input\n");
 		return (1);
 	}
 	file = av[1];
@@ -43,11 +43,12 @@ int	main(int ac, char **av)
 	img = mlx_new_image(mlx, WIDTH, HEIGHT);
 	if (!img || mlx_image_to_window(mlx, img, 0, 0) < 0)
 		return (1);
-	while (x < 200)
-	{
-		mlx_put_pixel(img, x, y, 0x00FF00FF);
-		x++;
-	}
+	draw_line(map, img);
+	// while (x < 200)
+	// {
+	// 	mlx_put_pixel(img, x, y, 0x00FF00FF);
+	// 	x++;
+	// }
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	free(map);

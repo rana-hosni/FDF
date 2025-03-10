@@ -6,7 +6,7 @@
 /*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:10:52 by relgheit          #+#    #+#             */
-/*   Updated: 2025/03/06 10:58:50 by relgheit         ###   ########.fr       */
+/*   Updated: 2025/03/10 15:09:45 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ typedef struct s_data
 {
     int     x;
     int     y;
+    int     z;
     int     **matrix;
 }				t_data;
 
 char	    *get_next_line(int fd);
-// static char	*read_fun(int fd, char *tmp, char *buffer);
-// static char	*clean_fun(char *str, char *buffer);
-// static char	*clean_buffer(char *buffer);
 void        read_file(char *file, t_data *map);
+void	    get_size(int fd, char *file, t_data *map);
+int     	**fill_matrix(char *file, t_data *map);
+void	    free_matrix(char **matrix);
+void	    draw_line(t_data *map, mlx_image_t *img);

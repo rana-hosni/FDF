@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rana <rana@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 08:34:43 by relgheit          #+#    #+#             */
-/*   Updated: 2025/03/08 21:54:29 by rana             ###   ########.fr       */
+/*   Updated: 2025/03/10 10:55:25 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,23 +61,24 @@ int	**fill_matrix(char *file, t_data *map)
 	{
 		i = 0;
 		temp = ft_split(line, ' ');
-		printf("line is : %s\n", line);
+		ft_printf("line is : %s\n", line);
 		while (temp[i] && temp[i][0] != '\n')
 		{
 			map->matrix[j][i] = ft_atoi(temp[i]);
+			map->z = map->matrix[j][i];
+			ft_printf("temp[%d] is : %s\n", i ,temp[i]);
 			i++;
 		}
 		j++;
 		if (i < map->x || i > map->x)
 		{
-			printf("Invalid Map\n");
+			ft_printf("Invalid Map\n");
 			free_matrix(temp);
 			return (NULL);
 		}
 		if (temp)
 			free_matrix(temp);
 		free(line);
-		free_matrix(temp);
 		line = get_next_line(fd);
 	}
 	free(line);
@@ -89,10 +90,10 @@ int	**fill_matrix(char *file, t_data *map)
 		j = 0;
 		while (j < map->x)
 		{
-			printf("%d ", map->matrix[i][j]);
+			ft_printf("%d ", map->matrix[i][j]);
 			j++;
 		}
-		printf("\n");
+		ft_printf("\n");
 		i++;
 	}
 	return (map->matrix);
@@ -104,35 +105,27 @@ void	get_size(int fd, char *file, t_data *map)
 	char **temp;
 	int i;
 
-	line = NULL;
-	temp = NULL;
 	map->x = 0;
 	map->y = 0;
 	line = get_next_line(fd);
 	if (!line)
 	{
-		printf("Empty Map\n");
+		ft_printf("Empty Map\n");
 		return ;
 	}
-	printf("test\n");
 	temp = ft_split(line, ' ');
 	while (temp[map->x] && temp[map->x][0] != '\n')
-	{
-		printf("temp[%d] is : %s\n", map->x ,temp[map->x]);
-		free(temp[map->x]);
-		// ft_printf("%c ", **temp++);
 		map->x++;
-	}
 	while (line)
 	{
 		map->y++;
 		free(line);
 		line = get_next_line(fd);
 	}
-	free(temp);
+	free_matrix(temp);
 	free(line);
-	printf("y: %d\n", map->y);
-	printf("x: %d\n", map->x);
+	ft_printf("y: %d\n", map->y);
+	ft_printf("x: %d\n", map->x);
 }
 
 void    read_file(char *file, t_data *map)
@@ -145,15 +138,15 @@ void    read_file(char *file, t_data *map)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
     {
-		printf("error opening file\n");
+		ft_printf("error opening file\n");
 		return ;
     }
-	printf("file opened\n");
+	ft_printf("file opened\n");
 	get_size(fd, file, map);
 	close(fd);
 	map->matrix = alloc_matrix(map->x, map->y);
 	fill_matrix(file, map);
-	printf("matrix allocated\n");
+	ft_printf("matrix allocated\n");
 	i = 0;
 	while (i < map->y)
 	{

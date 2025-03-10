@@ -6,11 +6,11 @@
 #    By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 09:06:43 by relgheit          #+#    #+#              #
-#    Updated: 2025/03/06 14:10:31 by relgheit         ###   ########.fr        #
+#    Updated: 2025/03/10 15:07:17 by relgheit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFILES= main.c read_file.c
+CFILES= main.c read_file.c draw.c
 
 OFILES= $(CFILES:.c=.o)
 
