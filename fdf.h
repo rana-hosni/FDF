@@ -6,7 +6,7 @@
 /*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:10:52 by relgheit          #+#    #+#             */
-/*   Updated: 2025/03/10 15:09:45 by relgheit         ###   ########.fr       */
+/*   Updated: 2025/03/12 13:57:18 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,30 @@
 #  define BUFFER_SIZE 10
 # endif
 
+#define WIDTH 1000
+#define HEIGHT 1000
+#define SCALE 20
+
+# define x_angle 45
+# define y_angle 35
+
 typedef struct s_data
 {
     int     x;
     int     y;
-    int     z;
+    // int     z;
     int     **matrix;
 }				t_data;
+
+typedef struct s_points
+{
+    int     x;
+    int     y;
+}				t_points;
 
 char	    *get_next_line(int fd);
 void        read_file(char *file, t_data *map);
 void	    get_size(int fd, char *file, t_data *map);
 int     	**fill_matrix(char *file, t_data *map);
 void	    free_matrix(char **matrix);
-void	    draw_line(t_data *map, mlx_image_t *img);
+void	    draw_line(int x0, int x1, int y0, int y1, mlx_image_t *img, t_data *map);

@@ -6,23 +6,20 @@
 /*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 12:29:12 by relgheit          #+#    #+#             */
-/*   Updated: 2025/03/10 15:08:51 by relgheit         ###   ########.fr       */
+/*   Updated: 2025/03/12 14:26:48 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 
-#define WIDTH 500
-#define HEIGHT 500
-
 int	main(int ac, char **av)
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 	int			**matrix;
-	int			x = 50;
-	int			y = 50;
+	int			x;
+	int			y;
 	int			fd;
 	char		*file;
 	t_data		*map;
@@ -43,12 +40,31 @@ int	main(int ac, char **av)
 	img = mlx_new_image(mlx, WIDTH, HEIGHT);
 	if (!img || mlx_image_to_window(mlx, img, 0, 0) < 0)
 		return (1);
-	draw_line(map, img);
-	// while (x < 200)
-	// {
-	// 	mlx_put_pixel(img, x, y, 0x00FF00FF);
-	// 	x++;
-	// }
+	x = (WIDTH/2) - ((map->x/2) * SCALE);
+	ft_printf("x: %d\n", x);
+	while (x <= ((WIDTH/2) + ((map->x/2) * SCALE) - SCALE))
+	{
+		y = (HEIGHT/2) - ((map->y/2) * SCALE);
+		while (y <= ((HEIGHT/2) + ((map->y/2) * SCALE) - SCALE))
+		{
+			if (x == (WIDTH/2) + ((map->x/2) * SCALE) - SCALE
+					&& y == (HEIGHT/2) + ((map->y/2) * SCALE) - SCALE)
+					break;
+			else if (y == (HEIGHT/2) + ((map->y/2) * SCALE) - SCALE)
+				draw_line(x, x + SCALE, y, y, img, map);
+			else if (x == (WIDTH/2) + ((map->x/2) * SCALE) - SCALE)
+				draw_line(x, x, y, y + SCALE, img, map);
+			else
+			{
+				draw_line(x, x + SCALE, y, y, img, map);
+				draw_line(x, x, y, y + SCALE, img, map);
+				
+			}	
+			// mlx_put_pixel(img, x, y, 0x00FF00FF);
+			y+= SCALE;
+		}
+		x+= SCALE;
+	}
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	free(map);

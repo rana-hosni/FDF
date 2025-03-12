@@ -6,7 +6,7 @@
 /*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 08:34:43 by relgheit          #+#    #+#             */
-/*   Updated: 2025/03/10 10:55:25 by relgheit         ###   ########.fr       */
+/*   Updated: 2025/03/12 11:52:33 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,9 @@ int	**fill_matrix(char *file, t_data *map)
 	{
 		i = 0;
 		temp = ft_split(line, ' ');
-		ft_printf("line is : %s\n", line);
 		while (temp[i] && temp[i][0] != '\n')
 		{
 			map->matrix[j][i] = ft_atoi(temp[i]);
-			map->z = map->matrix[j][i];
-			ft_printf("temp[%d] is : %s\n", i ,temp[i]);
 			i++;
 		}
 		j++;
@@ -83,19 +80,6 @@ int	**fill_matrix(char *file, t_data *map)
 	}
 	free(line);
 	close(fd);
-	i = 0;
-	j = 0;
-	while (i < map->y)
-	{
-		j = 0;
-		while (j < map->x)
-		{
-			ft_printf("%d ", map->matrix[i][j]);
-			j++;
-		}
-		ft_printf("\n");
-		i++;
-	}
 	return (map->matrix);
 }
 

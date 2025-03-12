@@ -6,48 +6,63 @@
 /*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:52:35 by relgheit          #+#    #+#             */
-/*   Updated: 2025/03/10 15:09:23 by relgheit         ###   ########.fr       */
+/*   Updated: 2025/03/12 13:59:21 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	draw_line(t_data *map, mlx_image_t *img)
+// void	isometric(t_data *map)
+// {
+// 	t_points	*points;
+// 	int		i;
+// 	int		j;
+	
+// 	points = (t_points *)malloc(sizeof(t_points) * map->x * map->y);
+// 	if (!points)
+// 		return ;
+// 	i = 0;
+	
+// }
+void	draw_line(int x0, int x1, int y0, int y1, mlx_image_t *img, t_data *map)
 {
 	int		i;
-	int		j;
 	int		dx;
 	int		dy;
+	int 	d;
 
+	dx = x1 - x0;
+	dy = y1 - y0;
+	d = (2 * dy) - dx;
 	i = 0;
-	while (i < map->x)
+	if (abs(dx) > abs(dy))
 	{
-		j = 0;
-		while (j < map->y)
+		while (i < dx)
 		{
-			if (j + 1 < map->y)
+			mlx_put_pixel(img, x0, y0, 0x00FF00FF);
+			if (d > 0)
 			{
-				dx = j - (j + 1);
-				dy = map->matrix[i][j] - map->matrix[i][j + 1];
-				if (dx < dy)
-				{
-					while (dx < dy)
-					{
-						mlx_put_pixel(img, i, j, 0x00FF00FF);
-						dx++;
-					}
-				}
-				else
-				{
-					while (dy < dx)
-					{
-						mlx_put_pixel(img, i, j, 0x00FF00FF);
-						dy++;
-					}
-				}
+				d = d - (2 * dx);
+				y0++;
 			}
-			j++;
+			d = d + (2 * dy);
+			x0++;
+			i++;
 		}
 	}
-	
+	else
+	{
+		while (i < dy)
+		{
+			mlx_put_pixel(img, x0, y0, 0x00FF00FF);
+			if (d > 0)
+			{
+				d = d - (2 * dy);
+				x0++;
+			}
+			d = d + (2 * dx);
+			y0++;
+			i++;
+		}
+	}
 }
