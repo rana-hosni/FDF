@@ -6,7 +6,7 @@
 /*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 12:29:12 by relgheit          #+#    #+#             */
-/*   Updated: 2025/03/12 14:26:48 by relgheit         ###   ########.fr       */
+/*   Updated: 2025/03/12 14:35:37 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ int	main(int ac, char **av)
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;
-	int			**matrix;
 	int			x;
 	int			y;
-	int			fd;
 	char		*file;
 	t_data		*map;
 
@@ -51,13 +49,13 @@ int	main(int ac, char **av)
 					&& y == (HEIGHT/2) + ((map->y/2) * SCALE) - SCALE)
 					break;
 			else if (y == (HEIGHT/2) + ((map->y/2) * SCALE) - SCALE)
-				draw_line(x, x + SCALE, y, y, img, map);
+				draw_line(x, x + SCALE, y, y, img);
 			else if (x == (WIDTH/2) + ((map->x/2) * SCALE) - SCALE)
-				draw_line(x, x, y, y + SCALE, img, map);
+				draw_line(x, x, y, y + SCALE, img);
 			else
 			{
-				draw_line(x, x + SCALE, y, y, img, map);
-				draw_line(x, x, y, y + SCALE, img, map);
+				draw_line(x, x + SCALE, y, y, img);
+				draw_line(x, x, y, y + SCALE, img);
 				
 			}	
 			// mlx_put_pixel(img, x, y, 0x00FF00FF);

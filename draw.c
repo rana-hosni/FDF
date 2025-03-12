@@ -6,7 +6,7 @@
 /*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:52:35 by relgheit          #+#    #+#             */
-/*   Updated: 2025/03/12 13:59:21 by relgheit         ###   ########.fr       */
+/*   Updated: 2025/03/12 14:35:13 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 // 	i = 0;
 	
 // }
-void	draw_line(int x0, int x1, int y0, int y1, mlx_image_t *img, t_data *map)
+void	draw_line(int x0, int x1, int y0, int y1, mlx_image_t *img)
 {
 	int		i;
 	int		dx;

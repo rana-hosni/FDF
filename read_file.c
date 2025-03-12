@@ -6,7 +6,7 @@
 /*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 08:34:43 by relgheit          #+#    #+#             */
-/*   Updated: 2025/03/12 11:52:33 by relgheit         ###   ########.fr       */
+/*   Updated: 2025/03/12 14:35:00 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,10 @@ int	**fill_matrix(char *file, t_data *map)
 	return (map->matrix);
 }
 
-void	get_size(int fd, char *file, t_data *map)
+void	get_size(int fd, t_data *map)
 {
 	char *line;
 	char **temp;
-	int i;
 
 	map->x = 0;
 	map->y = 0;
@@ -126,7 +125,7 @@ void    read_file(char *file, t_data *map)
 		return ;
     }
 	ft_printf("file opened\n");
-	get_size(fd, file, map);
+	get_size(fd, map);
 	close(fd);
 	map->matrix = alloc_matrix(map->x, map->y);
 	fill_matrix(file, map);

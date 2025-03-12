@@ -6,7 +6,7 @@
 #    By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/25 09:06:43 by relgheit          #+#    #+#              #
-#    Updated: 2025/03/12 12:10:21 by relgheit         ###   ########.fr        #
+#    Updated: 2025/03/12 14:32:21 by relgheit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIBMLX= ./MLX42
 
 HEADERS= -I $(LIBMLX)/include -I ./libft -I ./printf
 
-CFLAGS= -g #-Wall -Werror -Wextra -Wunreachable-code -Ofast
+CFLAGS= -g -Wall -Werror -Wextra -Wunreachable-code -Ofast
 
 LIBS= $(LIBMLX)/build/libmlx42.a ./libft/libft.a ./printf/libftprintf.a -ldl -lglfw -pthread -lm
 
