@@ -6,7 +6,7 @@
 /*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:10:52 by relgheit          #+#    #+#             */
-/*   Updated: 2025/03/12 14:35:19 by relgheit         ###   ########.fr       */
+/*   Updated: 2025/03/14 10:43:16 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,4 @@ void	    get_size(int fd, t_data *map);
 int     	**fill_matrix(char *file, t_data *map);
 void	    free_matrix(char **matrix);
 void	    draw_line(int x0, int x1, int y0, int y1, mlx_image_t *img);
+void	    isometric(t_data *map);

@@ -6,24 +6,38 @@
 /*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:52:35 by relgheit          #+#    #+#             */
-/*   Updated: 2025/03/12 14:35:13 by relgheit         ###   ########.fr       */
+/*   Updated: 2025/03/14 10:36:25 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// void	isometric(t_data *map)
-// {
-// 	t_points	*points;
-// 	int		i;
-// 	int		j;
+void	isometric(t_data *map)
+{
+	t_points	*points;
+	int		i;
+	int		x;
+	int		y;
 	
-// 	points = (t_points *)malloc(sizeof(t_points) * map->x * map->y);
-// 	if (!points)
-// 		return ;
-// 	i = 0;
-	
-// }
+	points = (t_points *)malloc(sizeof(t_points) * map->x * map->y);
+	if (!points)
+		return ;
+
+	x = 0;
+	i = 0;
+	while(x < map->x)
+	{
+		y = 0;
+		while(y < map->y)
+		{
+			points[i].x = (x - y) * cos(0.523599);
+			points[i].y = (x + y) * sin(0.523599) - map->matrix[x][y];
+			i++;
+			y++;
+		}
+		x++;
+	}
+}
 void	draw_line(int x0, int x1, int y0, int y1, mlx_image_t *img)
 {
 	int		i;
@@ -66,3 +80,4 @@ void	draw_line(int x0, int x1, int y0, int y1, mlx_image_t *img)
 		}
 	}
 }
+

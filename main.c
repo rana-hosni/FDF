@@ -6,7 +6,7 @@
 /*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 12:29:12 by relgheit          #+#    #+#             */
-/*   Updated: 2025/03/12 14:35:37 by relgheit         ###   ########.fr       */
+/*   Updated: 2025/03/14 10:44:17 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(int ac, char **av)
 		return (1);
 	x = (WIDTH/2) - ((map->x/2) * SCALE);
 	ft_printf("x: %d\n", x);
+	isometric(map);
 	while (x <= ((WIDTH/2) + ((map->x/2) * SCALE) - SCALE))
 	{
 		y = (HEIGHT/2) - ((map->y/2) * SCALE);
