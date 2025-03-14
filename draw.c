@@ -6,13 +6,13 @@
 /*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:52:35 by relgheit          #+#    #+#             */
-/*   Updated: 2025/03/14 10:36:25 by relgheit         ###   ########.fr       */
+/*   Updated: 2025/03/14 13:21:20 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	isometric(t_data *map)
+t_points	isometric(t_data *map)
 {
 	t_points	*points;
 	int		i;
@@ -21,7 +21,7 @@ void	isometric(t_data *map)
 	
 	points = (t_points *)malloc(sizeof(t_points) * map->x * map->y);
 	if (!points)
-		return ;
+		exit(1);
 
 	x = 0;
 	i = 0;
@@ -37,6 +37,7 @@ void	isometric(t_data *map)
 		}
 		x++;
 	}
+	return (*points);
 }
 void	draw_line(int x0, int x1, int y0, int y1, mlx_image_t *img)
 {
@@ -53,7 +54,7 @@ void	draw_line(int x0, int x1, int y0, int y1, mlx_image_t *img)
 	{
 		while (i < dx)
 		{
-			mlx_put_pixel(img, x0, y0, 0x00FF00FF);
+			mlx_put_pixel(img, x0, y0, 0xFF0000FF);
 			if (d > 0)
 			{
 				d = d - (2 * dx);
@@ -68,7 +69,7 @@ void	draw_line(int x0, int x1, int y0, int y1, mlx_image_t *img)
 	{
 		while (i < dy)
 		{
-			mlx_put_pixel(img, x0, y0, 0x00FF00FF);
+			mlx_put_pixel(img, x0, y0, 0xAAFF00FF);
 			if (d > 0)
 			{
 				d = d - (2 * dy);

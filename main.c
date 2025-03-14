@@ -6,7 +6,7 @@
 /*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 12:29:12 by relgheit          #+#    #+#             */
-/*   Updated: 2025/03/14 10:44:17 by relgheit         ###   ########.fr       */
+/*   Updated: 2025/03/14 13:20:09 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@ int	main(int ac, char **av)
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;
-	int			x;
-	int			y;
+	// int			x;
+	// int			y;
 	char		*file;
 	t_data		*map;
+	t_points	*points;
 
+	int i = 0;
+	points = NULL;
 	if (ac != 2)
 	{
 		ft_printf("Wrong input\n");
@@ -38,32 +41,37 @@ int	main(int ac, char **av)
 	img = mlx_new_image(mlx, WIDTH, HEIGHT);
 	if (!img || mlx_image_to_window(mlx, img, 0, 0) < 0)
 		return (1);
-	x = (WIDTH/2) - ((map->x/2) * SCALE);
-	ft_printf("x: %d\n", x);
-	isometric(map);
-	while (x <= ((WIDTH/2) + ((map->x/2) * SCALE) - SCALE))
+	// x = (WIDTH/2) - ((map->x/2) * SCALE);
+	// ft_printf("x: %d\n", x);
+	*points = isometric(map);
+	while (i < map->x * map->y)
 	{
-		y = (HEIGHT/2) - ((map->y/2) * SCALE);
-		while (y <= ((HEIGHT/2) + ((map->y/2) * SCALE) - SCALE))
-		{
-			if (x == (WIDTH/2) + ((map->x/2) * SCALE) - SCALE
-					&& y == (HEIGHT/2) + ((map->y/2) * SCALE) - SCALE)
-					break;
-			else if (y == (HEIGHT/2) + ((map->y/2) * SCALE) - SCALE)
-				draw_line(x, x + SCALE, y, y, img);
-			else if (x == (WIDTH/2) + ((map->x/2) * SCALE) - SCALE)
-				draw_line(x, x, y, y + SCALE, img);
-			else
-			{
-				draw_line(x, x + SCALE, y, y, img);
-				draw_line(x, x, y, y + SCALE, img);
-				
-			}	
-			// mlx_put_pixel(img, x, y, 0x00FF00FF);
-			y+= SCALE;
-		}
-		x+= SCALE;
+		draw_line(points[i].x, points[i].x + 1, points[i].y, points[i].y, img);
+		i++;
 	}
+	// while (x <= ((WIDTH/2) + ((map->x/2) * SCALE) - SCALE))
+	// {
+	// 	y = (HEIGHT/2) - ((map->y/2) * SCALE);
+	// 	while (y <= ((HEIGHT/2) + ((map->y/2) * SCALE) - SCALE))
+	// 	{
+	// 		if (x == (WIDTH/2) + ((map->x/2) * SCALE) - SCALE
+	// 				&& y == (HEIGHT/2) + ((map->y/2) * SCALE) - SCALE)
+	// 				break;
+	// 		else if (y == (HEIGHT/2) + ((map->y/2) * SCALE) - SCALE)
+	// 			draw_line(x, x + SCALE , y, y, img);
+	// 		else if (x == (WIDTH/2) + ((map->x/2) * SCALE) - SCALE)
+	// 			draw_line(x, x, y, y + SCALE, img);
+	// 		else
+	// 		{
+	// 			draw_line(x, x + SCALE + 1 , y, y, img);
+	// 			draw_line(x, x, y, y + SCALE, img);
+				
+	// 		}	
+	// 		// mlx_put_pixel(img, x, y, 0x00FF00FF);
+	// 		y+= SCALE;
+	// 	}
+	// 	x+= SCALE;
+	// }
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	free(map);

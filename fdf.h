@@ -6,7 +6,7 @@
 /*   By: relgheit <relgheit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:10:52 by relgheit          #+#    #+#             */
-/*   Updated: 2025/03/14 10:43:16 by relgheit         ###   ########.fr       */
+/*   Updated: 2025/03/14 13:13:09 by relgheit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 #define WIDTH 1000
 #define HEIGHT 1000
-#define SCALE 5
+#define SCALE 50
 
 # define x_angle 45
 # define y_angle 35
@@ -41,10 +41,10 @@ typedef struct s_points
     int     y;
 }				t_points;
 
-char	    *get_next_line(int fd);
-void        read_file(char *file, t_data *map);
-void	    get_size(int fd, t_data *map);
-int     	**fill_matrix(char *file, t_data *map);
-void	    free_matrix(char **matrix);
-void	    draw_line(int x0, int x1, int y0, int y1, mlx_image_t *img);
-void	    isometric(t_data *map);
+char		*get_next_line(int fd);
+void		read_file(char *file, t_data *map);
+void		get_size(int fd, t_data *map);
+int			**fill_matrix(char *file, t_data *map);
+void		free_matrix(char **matrix);
+void		draw_line(int x0, int x1, int y0, int y1, mlx_image_t *img);
+t_points	isometric(t_data *map);
